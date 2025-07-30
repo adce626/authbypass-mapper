@@ -77,13 +77,13 @@ class ResponseAnalyzer:
         if status_change:
             # Check for common bypass patterns
             if orig_status in [401, 403] and mod_status == 200:
-                bypass_indicators.append("Authentication/Authorization bypass: {orig_status} -> 200")
+                bypass_indicators.append(f"Authentication/Authorization bypass: {orig_status} -> 200")
             elif orig_status == 302 and mod_status == 200:
                 bypass_indicators.append("Redirect bypass: 302 -> 200 (direct access)")
             elif orig_status == 404 and mod_status == 200:
                 bypass_indicators.append("Hidden endpoint discovered: 404 -> 200")
             elif orig_status in [500, 502, 503] and mod_status == 200:
-                bypass_indicators.append("Error bypass: {orig_status} -> 200")
+                bypass_indicators.append(f"Error bypass: {orig_status} -> 200")
         
         return {
             'status_code_change': status_change,

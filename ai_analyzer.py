@@ -119,6 +119,7 @@ class AIAnalyzer:
         # Remove potential phone numbers
         content = re.sub(r'\b\d{3}-\d{3}-\d{4}\b', '[PHONE]', content)
         content = re.sub(r'\b\(\d{3}\)\s*\d{3}-\d{4}\b', '[PHONE]', content)
+        content = re.sub(r'\b\d{3}\s*\d{3}\s*\d{4}\b', '[PHONE]', content)
         
         # Remove potential SSNs
         content = re.sub(r'\b\d{3}-\d{2}-\d{4}\b', '[SSN]', content)
