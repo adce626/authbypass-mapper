@@ -1,0 +1,82 @@
+{
+  "login_flows": [
+    {
+      "name": "standard_login",
+      "description": "Standard username/password login",
+      "steps": [
+        {
+          "step": 1,
+          "type": "POST",
+          "url": "https://example.com/api/login",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "data": {
+            "username": "{{USERNAME}}",
+            "password": "{{PASSWORD}}"
+          },
+          "extract_tokens": [
+            {
+              "name": "access_token",
+              "from": "response_json",
+              "path": "token"
+            },
+            {
+              "name": "session_id",
+              "from": "cookie",
+              "path": "sessionid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "multi_step_oauth",
+      "description": "Multi-step OAuth flow",
+      "steps": [
+        {
+          "step": 1,
+          "type": "GET",
+          "url": "https://example.com/oauth/authorize",
+          "extract_tokens": [
+            {
+              "name": "csrf_token",
+              "from": "response_html",
+              "regex": "csrf_token.*?value=[\"']([^\"']+)[\"']"
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "type": "POST",
+          "url": "https://example.com/oauth/token",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "data": {
+            "grant_type": "authorization_code",
+            "code": "{{AUTH_CODE}}",
+            "csrf_token": "{{csrf_token}}"
+          },
+          "extract_tokens": [
+            {
+              "name": "access_token",
+              "from": "response_json",
+              "path": "access_token"
+            },
+            {
+              "name": "refresh_token",
+              "from": "response_json",
+              "path": "refresh_token"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "credentials": {
+    "USERNAME": "test_user",
+    "PASSWORD": "test_password",
+    "AUTH_CODE": "test_auth_code"
+  }
+}

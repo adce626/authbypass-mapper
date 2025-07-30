@@ -15,10 +15,6 @@ author = "agent"
 task = "workflow.run"
 args = "AuthBypass Mapper"
 
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Web Interface"
-
 [[workflows.workflow]]
 name = "AuthBypass Mapper"
 author = "agent"
@@ -26,15 +22,6 @@ author = "agent"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python main.py --help"
-
-[[workflows.workflow]]
-name = "Web Interface"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python web_interface.py"
-waitForPort = 5000
 
 [[ports]]
 localPort = 5000
