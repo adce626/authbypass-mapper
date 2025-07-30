@@ -1,0 +1,1847 @@
+{
+  "scan_info": {
+    "timestamp": "2025-07-30T12:28:18.366311",
+    "input_file": "test_sample.har",
+    "total_original_requests": 1,
+    "total_attack_requests": 18,
+    "target_domain": null
+  },
+  "tests": [
+    {
+      "test_id": 1,
+      "attack_type": "remove_auth_header",
+      "description": "Removed authentication header: Authorization",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ef410>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0edd10>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ef410>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0edd10>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 2,
+      "attack_type": "jwt_null",
+      "description": "Set JWT token to null in header: Authorization",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer null",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fa850>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10a7d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fa850>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10a7d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 3,
+      "attack_type": "jwt_empty",
+      "description": "Set JWT token to empty in header: Authorization",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer ",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116850>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf109550>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116850>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf109550>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 4,
+      "attack_type": "jwt_invalid_signature",
+      "description": "Modified JWT signature in header: Authorization",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signaturX",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8810>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1146d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8810>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1146d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 5,
+      "attack_type": "remove_session_cookie",
+      "description": "Removed session cookie: sessionid",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {},
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf121a90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8e90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf121a90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8e90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 6,
+      "attack_type": "session_manipulation",
+      "description": "Modified session cookie sessionid: abc123def456 -> abc123def45X",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def45X"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0e1150>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10b0d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0e1150>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10b0d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 7,
+      "attack_type": "role_escalation",
+      "description": "Modified role parameter role: user -> admin",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "admin"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123050>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf109b50>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123050>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf109b50>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 8,
+      "attack_type": "x_forwarded_for",
+      "description": "Added X-Forwarded-For: 127.0.0.1 to bypass IP restrictions",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json",
+          "X-Forwarded-For": "127.0.0.1"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8810>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ee110>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8810>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ee110>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 9,
+      "attack_type": "x_real_ip",
+      "description": "Added X-Real-IP: 127.0.0.1 to bypass IP restrictions",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json",
+          "X-Real-IP": "127.0.0.1"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c190>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8550>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c190>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f8550>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 10,
+      "attack_type": "x_originating_ip",
+      "description": "Added X-Originating-IP: 127.0.0.1 to bypass IP restrictions",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json",
+          "X-Originating-IP": "127.0.0.1"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf117510>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123190>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf117510>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123190>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 11,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to POST",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "POST",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c6d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1096d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c6d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1096d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 12,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to PUT",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "PUT",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116dd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123710>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116dd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf123710>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 13,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to DELETE",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ecdd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ef250>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ecdd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0ef250>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 14,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to PATCH",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "PATCH",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f87d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116c90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0f87d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf116c90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 15,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to HEAD",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "HEAD",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10b690>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf108090>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf10b690>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf108090>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 16,
+      "attack_type": "method_tampering",
+      "description": "Changed HTTP method from GET to OPTIONS",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "OPTIONS",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf114f90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fafd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf114f90>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fafd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 17,
+      "attack_type": "path_traversal",
+      "description": "Added path traversal: /user/profile -> /user/profile/../admin",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/user/profile/../admin",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c1d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fbcd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c1d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/admin (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf0fbcd0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    },
+    {
+      "test_id": 18,
+      "attack_type": "admin_path",
+      "description": "Modified path to admin endpoint: /user/profile -> /admin/user/profile",
+      "original_request": {
+        "url": "https://api.example.com/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "modified_request": {
+        "url": "https://api.example.com/admin/user/profile",
+        "method": "GET",
+        "headers": {
+          "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature",
+          "Content-Type": "application/json"
+        },
+        "cookies": {
+          "sessionid": "abc123def456"
+        },
+        "query_params": {},
+        "post_data": {
+          "user_id": 123,
+          "role": "user"
+        },
+        "auth_indicators": {
+          "has_auth_header": true,
+          "has_jwt_token": true,
+          "has_session_cookie": true,
+          "has_api_key": false,
+          "auth_headers": [
+            "Authorization"
+          ],
+          "session_cookies": [
+            "sessionid"
+          ],
+          "potential_tokens": [
+            "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.test.signature"
+          ]
+        }
+      },
+      "original_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1200d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "modified_response": {
+        "status_code": null,
+        "reason": null,
+        "headers": {},
+        "cookies": {},
+        "content": "",
+        "content_length": 0,
+        "response_time": 0,
+        "url": null,
+        "history": [],
+        "is_redirect": false,
+        "error": "Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /admin/user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c5d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))"
+      },
+      "diff_analysis": {
+        "significant_change": false,
+        "error": "Request error - Original: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf1200d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\")), Modified: Connection error: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /admin/user/profile (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7ffbdf11c5d0>: Failed to resolve 'api.example.com' ([Errno -2] Name or service not known)\"))",
+        "status_code_change": false,
+        "content_change": false,
+        "redirect_change": false,
+        "header_changes": {},
+        "confidence_score": 0.0
+      }
+    }
+  ]
+}
